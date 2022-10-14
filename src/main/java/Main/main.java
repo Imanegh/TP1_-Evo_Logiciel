@@ -29,7 +29,7 @@ public class main {
 	public static Map<SimpleName, Integer> MethodNbParams = new HashMap<SimpleName, Integer>();
 
 	public static void Fonctionalités(){
-		System.out.println("Nombreeeee de classes: " +  NombreDeClasses + "\n");
+		System.out.println("Nombre de classes: " +  NombreDeClasses + "\n");
 		System.out.println("Nombre de lignes du code: " + nbdelignesducode + "\n");
 		System.out.println("Nombre de methodes: " + NombreDeMethodes + "\n");
 		System.out.println("Nombre d'attributs: " + NombreAttributs + "\n");
