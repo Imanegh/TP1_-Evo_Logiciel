@@ -72,7 +72,7 @@ public class VisitDataCollector {
 	        .sorted(Collections.reverseOrder(Entry.comparingByValue()))
 			.collect(Collectors.toMap(entry -> entry.getKey(), entry -> entry.getValue(),
 					(entry1, entry2) -> entry2, LinkedHashMap::new));
-    System.out.println("\n" + "Method - statements number: " + MethodNbLinesSorted + "\n");
+    System.out.println("\n" + "Nombre de lignes de méthode: " + MethodNbLinesSorted + "\n");
     
     int top10MethodNum = Math.round(NombreDeMethodes*0.1) < 1 ? 1 : (int)Math.round(NombreDeMethodes*0.1);
     List<SimpleName> methodStateTop = new ArrayList<SimpleName>(MethodNbLinesSorted.keySet())

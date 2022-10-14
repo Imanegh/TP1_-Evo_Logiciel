@@ -1,6 +1,7 @@
 package Main;
 
 
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.HashSet;
@@ -28,42 +29,16 @@ public class main {
 	public static Map<SimpleName, Integer> MethodNbLines = new HashMap<SimpleName, Integer>();
 	public static Map<SimpleName, Integer> MethodNbParams = new HashMap<SimpleName, Integer>();
 
-	public static void Fonctionalités(){
-		System.out.println("Nombre de classes: " +  NombreDeClasses + "\n");
-		System.out.println("Nombre de lignes du code: " + nbdelignesducode + "\n");
-		System.out.println("Nombre de methodes: " + NombreDeMethodes + "\n");
-		System.out.println("Nombre d'attributs: " + NombreAttributs + "\n");
-		System.out.println("Package number of application: " + packages.size() + "\n");
-		System.out.println("Nombre total de methodes: " + nbtotalmethodes + "\n");
-		System.out.println("Nombre moyen de méthodes par classe: " + NombreAttributs/NombreDeClasses + "\n");
-		System.out.println("Nombre moyen d’attributs par classe: " + NombreDeMethodes/NombreDeClasses + "\n");
-		System.out.println("Nombre moyen de lignes de code par méthode: " + nbtotalmethodes/NombreDeMethodes + "\n");
+	public static void main(String[] args) throws IOException {		
+		System.out.println(" Nombre de classes de l’application: " +  NombreDeClasses + "\n");
+		System.out.println(" Nombre de lignes de code de l’application: " + nbdelignesducode + "\n");
+		System.out.println(" Nombre d'attributs par classe: " + NombreAttributs + "\n");
+		System.out.println(" Nombre de méthodes de l’application: " + NombreDeMethodes + "\n");	
+		System.out.println(" Nombre total de méthodes de l’application: " + nbtotalmethodes + "\n");	
+		System.out.println(" Nombre total de packages de l’application " + packages.size() + "\n");
+		System.out.println(" Nombre moyen de méthodes par classe: " + NombreAttributs/NombreDeClasses + "\n");
+		System.out.println(" Nombre moyen de lignes de code par méthode: " + nbtotalmethodes/NombreDeMethodes + "\n");
+		System.out.println(" Nombre moyen d’attributs par classe: " + NombreDeMethodes/NombreDeClasses + "\n");			
 	
-		
-		 ASTParser parser = ASTParser.newParser(AST.JLS4);
-	parser.setSource("public class A { int i = 9;  \n int j; \n ArrayList<Integer> al = new ArrayList<Integer>();j=1000; }".toCharArray());
-	
-	parser.setKind(ASTParser.K_COMPILATION_UNIT);
-	
-	final CompilationUnit cu = (CompilationUnit) parser.createAST(null);
-	cu.accept(new ASTVisitor() {
-
-		Set names = new HashSet();
-
-		public boolean visit(VariableDeclarationFragment node) {
-			SimpleName name = node.getName();
-			this.names.add(name.getIdentifier());
-			System.out.println("Declaration of '"+name+"' at line"+cu.getLineNumber(name.getStartPosition()));
-			return false; 
-		}
-
-		public boolean visit(SimpleName node) {
-			if (this.names.contains(node.getIdentifier())) {
-			System.out.println("Usage of '" + node + "' at line " +	cu.getLineNumber(node.getStartPosition()));
-			}
-			return true;
-		}
-
-	});
-}
+	}	
 }
